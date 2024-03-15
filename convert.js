@@ -1,23 +1,23 @@
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 const input = document.querySelector('input[type="url"]');
-const output = document.getElementById('shortedurl');
+const output = document.getElementById("shortedurl");
 
-form.addEventListener('submit', async (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const longUrl = input.value;
 
   // generate a unique short code using an API
   const response = await fetch(`https://api-ssl.bitly.com/v4/shorten`, {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer  a9350b44787823421ed85deb0e19f7a86ab6b64b',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    url: longUrl
-  })
-});
+    method: "POST",
+    headers: {
+      Authorization: "Bearer  a9350b44787823421ed85deb0e19f7a86ab6b64b",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url: longUrl,
+    }),
+  });
 
   const data = await response.json();
 
